@@ -23,6 +23,11 @@ let excel = new Excel(path.join(__dirname,'test.xlsx')
 
 读取指定sheet,sheet参数可以是数字或者字符串，返回excel文件指定sheet的所有数据的json格式
 
+```
+excel.readSheet('Sheet1');
+excel.readSheet(0);
+```
+
 ### readRow(sheet,rowNumber)
 
 读取指定sheet中指定行的数据，rowNumber取值应该大于等于0，如果等于0，会返回该sheet的headers数组
@@ -30,11 +35,35 @@ let excel = new Excel(path.join(__dirname,'test.xlsx')
 ### readCell(sheet,rowNumber,cell)
 
 返回指定行列的数据，cell可以是字符串，也可以是数字
-
+```
+excel.readCell('Sheet1',1,5);
+excel.readCell('Sheet1',1,'name')
+```
 ### writeSheet(sheet,headers,data)
 
 新建或者替换excel中的某sheet的数据，headers是表头数组，data是对象数组，数组中每个对象表示某一行的数据
-
+```
+excel.writeSheet('Sheet1',['name','age','country'],[
+    {
+        name: 'Jane',
+        age: 19,
+        country: 'China'
+    },
+    {
+        name: 'Maria',
+        age: 20,
+        country: 'America'
+    }
+]);
+```
 ### writeRow(sheet,row,data)
 
 写入指定行数据
+
+```
+excel.writeRow('Sheet1',1,{
+    name: 'Jane',
+    age: 19,
+    country: 'China'
+})
+```
