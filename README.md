@@ -1,7 +1,7 @@
 # excel-class
 a module helping to handle excel based on js-xlsx
 
-[中文文档]()
+[中文文档](https://github.com/laoqiren/excel-class/blob/master/CN.md)
 ### Getting start
 
 `
