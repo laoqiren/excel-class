@@ -1,6 +1,7 @@
 # excel-class
 a module helping to handle excel based on js-xlsx
 
+[中文文档]()
 ### Getting start
 
 `
@@ -28,7 +29,7 @@ excel.readSheet(0);
 ```
 
 #### readRow(sheet,rowNumber)
-read the excel by rowNumber, the rowNumber should must largger than 0, if rowNumber is 0, this api will return a array of headers.
+read the excel by rowNumber, the rowNumber should must largger than 0, if rowNumber is 0, this api will return an array contains headers.
 
 #### readCell(sheet,rowNumber,cell)
 
