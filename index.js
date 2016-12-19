@@ -69,51 +69,55 @@ class Excel{
             pos = Object.keys(output),
             ref = pos[0] + ':' + pos[pos.length-1];
 
-        this.writeExcel(output,sheet,ref);
+        return this.writeExcel(output,sheet,ref);
         
     }
     writeExcel(newSheet,sheetName,ref){
-        let excel = this.readFile();
+        
         let workbook;
-        fs.stat(this.excel,(err,stat)=>{
-            if(stat && stat.isFile()){
-                excel.SheetNames.push(sheetName);
-                workbook = {
-                    SheetNames: [...new Set(excel.SheetNames)],
-                    Sheets: Object.assign(excel.Sheets,{
-                        [sheetName]: Object.assign({},{'!ref':ref},newSheet)
-                    })
-                }
-            } else {
-                workbook = {
-                    SheetNames: [sheetName],
-                    Sheets: {
-                        [sheetName]: Object.assign({},{'!ref':ref},newSheet)
+        return new Promise((resolve,reject)=>{
+            fs.stat(this.excel,(err,stat)=>{
+                if(stat && stat.isFile()){
+                    let excel = this.readFile();
+                    excel.SheetNames.push(sheetName);
+                    workbook = {
+                        SheetNames: [...new Set(excel.SheetNames)],
+                        Sheets: Object.assign(excel.Sheets,{
+                            [sheetName]: Object.assign({},{'!ref':ref},newSheet)
+                        })
+                    }
+                } else {
+                    workbook = {
+                        SheetNames: [sheetName],
+                        Sheets: {
+                            [sheetName]: Object.assign({},{'!ref':ref},newSheet)
+                        }
                     }
                 }
-            }
-            try {
-                XLSX.writeFile(workbook,this.excel)
-            } catch(err){
-                if(err){
-                    console.error(err)
-                    return false;
+                try {
+                    XLSX.writeFile(workbook,this.excel)
+                } catch(err){
+                    if(err){
+                        console.error(err)
+                        reject();
+                    }
                 }
-            }
-            console.log('写入excel表格成功！')
-        });
+                resolve();
+                console.log('写入excel表格成功！')
+            });
+        })
     }
     writeRow(sheet,row,data){
         let preData = this.readSheet(sheet),
             headers = this.readHead(sheet);
         preData[row-1] = data;
-        this.writeSheet(sheet,headers,preData);
+        return this.writeSheet(sheet,headers,preData);
     }
     writeCell(sheet,row,column,data){
         let preData = this.readSheet(sheet),
             headers = this.readHead(sheet);
         preData[row-1][column] = data;
-        this.writeSheet(sheet,headers,preData);
+        return this.writeSheet(sheet,headers,preData);
     }
 }
 
