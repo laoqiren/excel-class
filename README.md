@@ -44,7 +44,7 @@ excel.readCell('Sheet1',1,'name')
 
 write a new sheet to the excel, if the sheet has exsited, the new data will replace it. And the other sheets in the excel will not changed.
 
-headers shoud be an array contains the headers of this sheet, and data should be type of array and it contains data of rows:
+headers shoud be an array contains the headers of this sheet, and data should be type of array and it contains data of rows. This api will return a promise.
 
 ```
 excel.writeSheet('Sheet1',['name','age','country'],[
@@ -58,17 +58,21 @@ excel.writeSheet('Sheet1',['name','age','country'],[
         age: 20,
         country: 'America'
     }
-]);
+]).then(()=>{
+    //do other things
+});
 ```
 
 ### writeRow(sheet,row,data)
 
-write the data of row in the sheet, the data should be a object
+write the data of row in the sheet, the data should be a object, this api will return a promise
 
 ```
 excel.writeRow('Sheet1',1,{
     name: 'Jane',
     age: 19,
     country: 'China'
+}).then(()=>{
+    //do other things
 })
 ```

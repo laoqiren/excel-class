@@ -41,7 +41,7 @@ excel.readCell('Sheet1',1,'name')
 ```
 ### writeSheet(sheet,headers,data)
 
-新建或者替换excel中的某sheet的数据，headers是表头数组，data是对象数组，数组中每个对象表示某一行的数据
+新建或者替换excel中的某sheet的数据，headers是表头数组，data是对象数组，数组中每个对象表示某一行的数据，API会返回promise对象
 ```
 excel.writeSheet('Sheet1',['name','age','country'],[
     {
@@ -54,16 +54,20 @@ excel.writeSheet('Sheet1',['name','age','country'],[
         age: 20,
         country: 'America'
     }
-]);
+]).then(()=>{
+    //do other things
+});
 ```
 ### writeRow(sheet,row,data)
 
-写入指定行数据
+写入指定行数据,API会返回promise对象
 
 ```
 excel.writeRow('Sheet1',1,{
     name: 'Jane',
     age: 19,
     country: 'China'
+}).then(()=>{
+    //do other things
 })
 ```
