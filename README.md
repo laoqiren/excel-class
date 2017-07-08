@@ -81,3 +81,5 @@ excel.writeRow('Sheet1',1,{
     //do other things
 })
 ```
+### LICENSE
+MIT.
