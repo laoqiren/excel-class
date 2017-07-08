@@ -19,7 +19,7 @@ APIs
 ```
 const Excel = require('excel-class');
 const path = require('path');
-let excel = new Excel(path.join(__dirname,'test.xlsx')
+let excel = new Excel(path.join(__dirname,'test.xlsx'))
 ```
 **注意** 文件路径名必须是绝对路径
 
