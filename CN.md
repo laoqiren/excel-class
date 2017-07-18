@@ -25,20 +25,20 @@ let excel = new Excel(path.join(__dirname,'test.xlsx'))
 
 ### readSheet(sheet)
 
-读取指定sheet,sheet参数可以是数字或者字符串，返回excel文件指定sheet的所有数据的json格式
+读取指定sheet,sheet参数可以是数字或者字符串，返回excel文件指定sheet的所有数据的json数组
 
 ```
 excel.readSheet('Sheet1');
 excel.readSheet(0);
 ```
 
-### readRow(sheet,rowNumber)
+### readRow(sheet,row)
 
-读取指定sheet中指定行的数据，rowNumber取值应该大于等于0，如果等于0，会返回该sheet的headers数组
+读取指定sheet中指定行的数据，row取值应该大于等于0，如果等于0，会返回该sheet的headers数组
 
-### readCell(sheet,rowNumber,cell)
+### readCell(sheet,row,column)
 
-返回指定行列的数据，cell可以是字符串，也可以是数字
+返回指定行列的数据，column可以是字符串，也可以是数字
 ```
 excel.readCell('Sheet1',1,5);
 excel.readCell('Sheet1',1,'name')
@@ -64,7 +64,7 @@ excel.writeSheet('Sheet1',['name','age','country'],[
 ```
 ### writeRow(sheet,row,data)
 
-写入指定行数据,API会返回promise对象
+写入数据到指定行,API会返回promise对象
 
 ```
 excel.writeRow('Sheet1',1,{
@@ -72,6 +72,15 @@ excel.writeRow('Sheet1',1,{
     age: 19,
     country: 'China'
 }).then(()=>{
+    //do other things
+})
+```
+### writeCell(sheet,row,column,data)
+
+写入数据到指定列，column为列名，API会返回promise对象
+
+```
+excel.writeCell('Sheet1',1,'age',20).then(()=>{
     //do other things
 })
 ```

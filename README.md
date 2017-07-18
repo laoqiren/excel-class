@@ -19,26 +19,37 @@ npm install excel-class
 ```
 const Excel = require('excel-class');
 const path = require('path');
-let excel = new Excel(path.join(__dirname,'test.xlsx')
+let excel = new Excel(path.join(__dirname,'test.xlsx'))
 ```
 **tip: the path of the excel file should be absolute path**
 
 ### readSheet(sheet)
-the argument can be type of Number or String
+get the data of specify row
 
 Read sheet by sheetName or sheetNumber, it will return json includes all data in the sheet.
+
+* **sheet** \<Number\>|\<String\> the number of sheet or the name of sheet to read.
+* Returns: \<Array\> all the data in the sheet.
+
 
 ```
 excel.readSheet('Sheet1');
 excel.readSheet(0);
 ```
 
-### readRow(sheet,rowNumber)
-read the excel by rowNumber, the rowNumber should must largger than 0, if rowNumber is 0, this api will return an array contains headers.
+### readRow(sheet,row)
 
-### readCell(sheet,rowNumber,cell)
+get the specify row's value, row should largger than 0, if row is 0, this api will return an array contains headers.
 
-return the correct cell of data, the cell can be type of Number or String.
+* **row** \<Number\> the number of row to read.
+* Returns: \<String\> the result
+
+### readCell(sheet,row,column)
+
+get the specify column's value, column can be type of Number or String.
+
+* **column** \<Number\>|\<String\> the number or name of column to read.
+* Returns: \<String\> the result 
 
 ```
 excel.readCell('Sheet1',1,5);
@@ -50,6 +61,10 @@ excel.readCell('Sheet1',1,'name')
 write a new sheet to the excel, if the sheet has exsited, the new data will replace it. And the other sheets in the excel will not changed.
 
 headers shoud be an array contains the headers of this sheet, and data should be type of array and it contains data of rows. This api will return a promise.
+
+* **headers** \<Array\> the headers of the sheet
+* **data** \<Array\> the data to write
+* Returns: Promise Object
 
 ```
 excel.writeSheet('Sheet1',['name','age','country'],[
@@ -70,7 +85,11 @@ excel.writeSheet('Sheet1',['name','age','country'],[
 
 ### writeRow(sheet,row,data)
 
-write the data of row in the sheet, the data should be a object, this api will return a promise
+write data to specify row , the data should be a object, this api will return a promise
+
+* **row** \<Number\> the number of row to write.
+* **data** \<Object\> the data to write
+* Returns: Promise Object
 
 ```
 excel.writeRow('Sheet1',1,{
@@ -81,5 +100,20 @@ excel.writeRow('Sheet1',1,{
     //do other things
 })
 ```
+
+### writeCell(sheet,row,column,data)
+
+write data to specify column , the data should be a object, this api will return a promise
+
+* **column** \<String\> the name of cloumn to write.
+* **data** the data to write
+* Returns: Promise Object
+
+```
+excel.writeCell('Sheet1',1,'age',20).then(()=>{
+    //do other things
+})
+```
+
 ### LICENSE
 MIT.
