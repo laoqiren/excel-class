@@ -24,7 +24,7 @@ let excel = new Excel(path.join(__dirname,'test.xlsx'))
 **tip: the path of the excel file should be absolute path**
 
 ### readSheet(sheet)
-get the data of specify row
+get the data of specify sheet
 
 Read sheet by sheetName or sheetNumber, it will return json includes all data in the sheet.
 
