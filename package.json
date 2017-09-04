@@ -1,6 +1,6 @@
 {
   "name": "excel-class",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "description": "a module helping to handle excel based on js-xlsx",
   "main": "index.js",
   "scripts": {
