@@ -51,7 +51,7 @@ describe("excel.writeRow()",function(){
         let excel = new Excel(path.join(__dirname,'../assets/test1.xlsx'));
 
         excel.writeRow('Sheet1',1,{
-            name: 'Jane',
+            name: 'Xia Luo',
             age: 19,
             country: 'China'
         }).then(()=>{
