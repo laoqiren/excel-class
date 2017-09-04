@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/dm/excel-class.svg?style=flat-square)](https://www.npmjs.com/package/excel-class)
 [![npm](https://img.shields.io/npm/v/excel-class.svg?style=flat-square)](https://github.com/laoqiren/excel-class)
-[![Travis](https://img.shields.io/travis/rust-lang/rust.svg?style=flat-square)]()
+[![Travis](https://travis-ci.org/laoqiren/excel-class.svg?branch=master)]()
 
 a module helping to handle excel based on js-xlsx
 
