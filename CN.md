@@ -2,7 +2,7 @@
 [![npm](https://img.shields.io/npm/dm/excel-class.svg?style=flat-square)](https://www.npmjs.com/package/excel-class)
 [![npm](https://img.shields.io/npm/v/excel-class.svg?style=flat-square)](https://github.com/laoqiren/excel-class)
 [![Travis](https://travis-ci.org/laoqiren/excel-class.svg?branch=master)]()
-
+[![Coverage Status](https://coveralls.io/repos/github/laoqiren/excel-class/badge.svg?branch=master)](https://coveralls.io/github/laoqiren/excel-class?branch=master)
 
 封装excel文件常用操作，基于js-xlsx模块
 
